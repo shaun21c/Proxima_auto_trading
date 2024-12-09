@@ -25,8 +25,19 @@ class KiwoomAPI(QMainWindow):
     def _login(self):
         ret = self.kiwoom.dynamicCall("CommConnect()")
         if ret == 0:
-            logger.info("로그인 창 열기 성공!")
-
+            logger.info("로그인 성공")
+        else:
+            raise Exception("로그인 실패")
+        
+    def _event_connect(self, err_code):
+        if err_code == 0:
+            logger.info("이벤트 연결 성공")
+        else:
+            raise Exception(f"이벤트 연결 실패: {err_code}")
+        
+    def _receive_realdata(self, code, real_type, real_data):
+        logger.info("조건 검색 정보 요청")
+        self.kiwoom.dynamicCall("GetConditionLoad()")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
