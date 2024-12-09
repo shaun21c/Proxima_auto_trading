@@ -38,6 +38,15 @@ class KiwoomAPI(QMainWindow):
         logger.info("조건 검색 정보 요청")
         self.kiwoom.dynamicCall("GetConditionLoad()")
 
+    def _receive_condition(self):
+        condition_info = self.kiwoom.dynamicCall("GetConditionNameList()".split(";"))
+        for condition_name_idx_str in condition_info:
+            if len(condition_name_idx_str)  == 0:
+                continue
+            condition_idx, condition_name = condition_name_idx_str.split("^")
+            if condition_name == self.using_condition_name:
+                self.condition(self._get_realtime_data_screen_num(), condition_name, condition_idx, 1)
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     kiwoom_api = KiwoomAPI()
