@@ -34,7 +34,7 @@ class KiwoomAPI(QMainWindow):
         else:
             raise Exception(f"이벤트 연결 실패: {err_code}")
         
-    def _receive_realdata(self, code, real_type, real_data):
+    def _after_login(self):
         logger.info("조건 검색 정보 요청")
         self.kiwoom.dynamicCall("GetConditionLoad()")
 
