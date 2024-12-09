@@ -10,7 +10,6 @@ class KiwoomAPI(QMainWindow):
         self.realtime_data_scrnum = 5000
         self.using_condition_name = ""
         self.realtime_registered_codes = []
-
         self.kiwoom = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
         # self._set_signal_slots()  # 키움증권 API의 내부 메서드 연결
         self._login()
@@ -21,14 +20,14 @@ class KiwoomAPI(QMainWindow):
         # self.kiwoom.OnReceiveConditionVer.connect(self._receive_condition)
         # self.kiwoom.OnReceiveRealCondition.connect(self._receive_real_condition)
         # self.kiwoom.OnReceiveTrCondition.connect(self._receive_tr_condition)
-
+    
     def _login(self):
         ret = self.kiwoom.dynamicCall("CommConnect()")
         if ret == 0:
             logger.info("로그인 성공")
         else:
             raise Exception("로그인 실패")
-        
+    
     def _event_connect(self, err_code):
         if err_code == 0:
             logger.info("이벤트 연결 성공")

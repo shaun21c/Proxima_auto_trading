@@ -1,17 +1,12 @@
-import datetime
 import time
 from loguru import logger
 import json
+from param import output
+from regex import B
 import requests
 import copy
-import yaml
 from collections import namedtuple
-
-
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import unpad
 import pandas as pd
-from base64 import b64decode
 
 
 class KoreaInvestAPI:
@@ -49,7 +44,6 @@ class KoreaInvestAPI:
 
             headers["tr_id"] = tr_id            # 거래 ID
             headers["custtype"] = self.custtype # 고객 종류
-
 
             # is_post_request가 True이면, POST 요청을 보냅니다.
             # **use_hash**가 True이면, set_order_hash_key()를 호출하여 해시 키를 헤더에 추가합니다.
@@ -376,7 +370,7 @@ class KoreaInvestAPI:
             od_list = tdf.index.to_list()
             qty_list = tdf['주문수당'].to_list()
             price_list = tdf['주문가격'].to_list()
-            branch_lsit = tdf['주문점'].to_list()
+            branch_list = tdf['주문점'].to_list()
             codes_list = tdf['종목코드'].to_list()
 
             cnt = 0
