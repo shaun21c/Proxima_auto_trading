@@ -24,7 +24,9 @@ class KiwoomAPI(QMainWindow):
         print(self.daily_data_df)
 
     def _set_signal_slots(self):
-        self.kiwoom.OnEventConnect.connect(self._event_connect)
+        # 로그인 결과 수신 이벤트
+        self.kiwoom.OnEventConnect.connect(self.event_connect)
+        # 요청 결과를 받아오는 이벤트
         self.kiwoom.OnReceiveTrData.connect(self._receive_tr_data)
 
 
@@ -47,6 +49,8 @@ class KiwoomAPI(QMainWindow):
         self.set_input_value("종목코드", code)
         self.set_input_value("기준일자", date)
         self.set_input_value("수정주가구분", 1) # 수정주가 사용
+        # CommRqData 메서드를 통해 TR을 요청하면, OnReceiveTrData 이벤트가 발생한다.
+        # 연속 조회시 2, 단순 조회시 0
         self.comm_rq_data("opt10081_req", "opt10081", 0, "5000")
 
 
@@ -67,7 +71,7 @@ class KiwoomAPI(QMainWindow):
         for i in range(data_cnt):
             date = self._comm_get_data(trcode, "", rqname, i, "일자")
             open = self._comm_get_data(trcode, "", rqname, i, "시가")
-            high = self._comm_get_data(trcode, "", rqname, i, "고사")
+            high = self._comm_get_data(trcode, "", rqname, i, "고가")
             low = self._comm_get_data(trcode, "", rqname, i, "저가")
             close = self._comm_get_data(trcode, "", rqname, i, "현재가")
             volume = self._comm_get_data(trcode, "", rqname, i, "거래량")
