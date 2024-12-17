@@ -2,7 +2,7 @@ import sys
 import datetime
 import pandas as pd
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
-from PyQt5.Qtcore import QEventLoop
+from PyQt5.QtCore import QEventLoop
 from PyQt5.QAxContainer import QAxWidget
 
 class KiwoomAPI(QMainWindow):
@@ -120,7 +120,7 @@ class KiwoomAPI(QMainWindow):
         현재평가잔고 = int(self._comm_get_data(trcode, "", rqname, 0, "추정예탁자산"))
         print(f"현재평가잔고: {현재평가잔고}")
         data_cnt = self._get_repeat_cnt(trcode, rqname)
-        for i in range(date_cnt):
+        for i in range(data_cnt):
             종목코드 = self._comm_get_data(trcode, "", rqname, i, "종목번호").replace("A", "").strip()
             매매가능수량 = int(self._comm_get_data(trcode, "", rqname, i, "매매가능수량"))
             보유수량 = int(self._comm_get_data(trcode, "", rqname, i, "보유수량"))

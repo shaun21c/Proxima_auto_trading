@@ -2,13 +2,13 @@ import sys
 import datetime
 import pandas as pd
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
-from PyQt5.Qtcore import QEventLoop
+from PyQt5.QtCore import QEventLoop
 from PyQt5.QAxContainer import QAxWidget
 
 class KiwoomAPI(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.daily_data_df: pd.DatFrame = pd.DataFrame(columns = ['시간', '시가', '고가', '저가', '종가', '거래량'])
+        self.daily_data_df: pd.DataFrame = pd.DataFrame(columns = ['시간', '시가', '고가', '저가', '종가', '거래량'])
         btn1 = QPushButton("일봉데이터 print", self)
         btn1.resize(200, 100)
         btn1.clicked.connect(self.btn1_clicked)
@@ -19,8 +19,7 @@ class KiwoomAPI(QMainWindow):
         self.kiwoom.dynamicCall("CommConnect()")
         self.login_event_loop.exec_()
         self.request_opt10081("039490", date = datetime.datetime.now().strftime('%Y%m%d'))
-
-
+    
     def btn1_clicked(self):
         print(self.daily_data_df)
 
@@ -29,12 +28,11 @@ class KiwoomAPI(QMainWindow):
         self.kiwoom.OnReceiveTrData.connect(self._receive_tr_data)
 
 
-
     def event_connect(self, err_code):
         if err_code == 0:
             print("로그인 성공!")
         else:
-            print("로그린 실패!")
+            print("로그인 실패!")
         self.login_event_loop.exit()
 
 

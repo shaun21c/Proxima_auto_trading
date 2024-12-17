@@ -11,10 +11,8 @@ HTMLParser==0.0.2
 ipykernel==6.29.5
 ipython==8.12.3
 ipywidgets==7.8.1
-jnius==1.1.0
 keyring==24.3.1
 mock==5.1.0
-pandas==2.0.3
 Pillow==11.0.0
 protobuf==3.20.3
 pycryptodome==3.21.0

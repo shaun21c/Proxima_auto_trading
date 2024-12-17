@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
-from PyQt5.Qtcore import QEventLoop
+from PyQt5.QtCore import QEventLoop
 from PyQt5.QAxContainer import QAxWidget
 
 class MyWindow(QMainWindow):
@@ -8,12 +8,12 @@ class MyWindow(QMainWindow):
         super().__init__()
         self.login_event_loop = QEventLoop()
         self.kiwoom = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
-        self.kiwoom.OnEventConnect.connect(self._event_connect)
+        self.kiwoom.OnEventConnect.connect(self.event_connect)
         self.kiwoom.dynamicCall("CommConnect()")
         self.login_event_loop.exec_()
 
         self.setWindowTitle("종목코드")
-        self.setGeeometry(300, 300, 300, 150)
+        self.setGeometry(300, 300, 300, 150)
 
         btn1 = QPushButton("종목코드 얻기", self)
         btn1.move(190, 10)
