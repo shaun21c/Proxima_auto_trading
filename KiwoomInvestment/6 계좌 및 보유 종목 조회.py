@@ -15,17 +15,14 @@ class KiwoomAPI(QMainWindow):
         btn1.move(190, 10)
         btn1.resize(200, 100)
         btn1.clicked.connect(self.btn1_clicked)
-
         self.kiwoom = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
         self._set_signal_slots()
         self.login_event_loop = QEventLoop()
+        self.is_remained_data = False
         self.kiwoom.dynamicCall("CommConnect()")
         self.login_event_loop.exec_()
-
-        
         self.request_opt10081("039490", date = datetime.datetime.now().strftime("%Y%m%d"))
         self.get_account_balance()
-        
 
     def get_account_info(self):
         account_nums = str(self.kiwoom.dynamicCall("GetLoginInfo(QString)", ["ACCNO"].rstrip(';')))
@@ -60,7 +57,14 @@ class KiwoomAPI(QMainWindow):
             print("연속 조회 실행!")
             self.request_opt10081("039490", date = datetime.datetime.now().strftime("%T%m%d"))
 
-    def comm_rq_data(self, rqname, trcode, next, screen_no):
+    def comm_rq_data(self, rqname, trcode, next, screen_no) -> None:
+        """
+        Argument:
+        rqname: 사용자 구분명
+        trcode: TR이름
+        next: 연속조회 여부
+        screen_no: 화면번호
+        """
         self.kiwoom.dynamicCall("CommRqData(QString, QString, int, QString)", rqname, trcode, next, screen_no)
 
 
@@ -93,7 +97,7 @@ class KiwoomAPI(QMainWindow):
         for i in range(data_cnt):
             date = self._comm_get_data(trcode, "", rqname, i, "일자")
             open = self._comm_get_data(trcode, "", rqname, i, "시가")
-            high = self._comm_get_data(trcode, "", rqname, i, "고가가")
+            high = self._comm_get_data(trcode, "", rqname, i, "고가")
             low = self._comm_get_data(trcode, "", rqname, i, "저가")
             close = self._comm_get_data(trcode, "", rqname, i, "현재가")
             volume = self._comm_get_data(trcode, "", rqname, i, "거래량")
@@ -118,8 +122,6 @@ class KiwoomAPI(QMainWindow):
             매입가 = int(self._comm_get_data(trcode, "", rqname, i, "매입가"))
             수익률 = int(self._comm_get_data(trcode, "", rqname, i, "수익률(%)"))
             print(종목코드, 매매가능수량, 보유수량, 매입가, 수익률)
-
-            
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
