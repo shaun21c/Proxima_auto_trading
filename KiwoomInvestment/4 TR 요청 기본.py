@@ -22,7 +22,7 @@ class KiwoomAPI(QMainWindow):
     
     def btn1_clicked(self):
         print(self.daily_data_df)
-
+    
     def _set_signal_slots(self):
         # 로그인 결과 수신 이벤트
         self.kiwoom.OnEventConnect.connect(self.event_connect)
