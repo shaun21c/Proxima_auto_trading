@@ -2,14 +2,12 @@ import sys
 import datetime
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from PyQt5.QAxContainer import QAxWidget
-from PyQt5.Qtcore import QEventLoop
-from PyQt5.Qtcore import QTimer
-
+from PyQt5.QtCore import QEventLoop, QTimer
 
 class KiwoomAPI(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.account_num = None
+        self.account_num = 8093337911
         
         btn1 = QPushButton("지정가매수주문", self)
         btn1.clicked.connect(self.btn1_clicked)
@@ -19,13 +17,13 @@ class KiwoomAPI(QMainWindow):
         btn2.setFixedSize(200, 50)
         btn2.clicked.connect(self.btn2_clicked)
 
-        self.kiwoom = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
+        self.kiwoom = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1") # 키움증권 API를 사용하기 위한 객체 생성, QAxWidget 클래스의 생성자에 "KHOPENAPI.KHOpenAPICtrl.1"을 전달하여 객체 생성
         self._set_signal_slots()
         self.login_event_loop = QEventLoop()
         self.kiwoom.dynamicCall("CommConnect()")
         self.login_event_loop.exec_()
 
-        self.unfinished_order_num_to_info_dict = dict()
+        self.unfinished_order_num_to_info_dict = dict() # 미체결 주문번호를 key로, 종목코드, 미체결수량, 주문체결시간, 주문구분을 value로 하는 딕셔너리
         self.timer1 = QTimer()
         self.timer1.timeout.connect(self.check_unfinished_orders)
         self.timer1.start(250) # 0.25초마다 한번
@@ -33,12 +31,14 @@ class KiwoomAPI(QMainWindow):
 
     def check_unfinished_orders(self):
         pop_list = []
-        for order_num, stock_info_dict in self.unfinished_order_num_to_info_dict.items():
+        for order_num, stock_info_dict in self.unfinished_order_num_to_info_dict.items(): 
+            # 미체결 주문번호(키)와 주문정보 딕셔너리(밸류)를 순회, itmes() 메서드는 딕셔너리의 키와 밸류를 튜플로 반환
             주문번호 =  order_num
             종목코드 = stock_info_dict['종목코드']
             주문체결시간 = stock_info_dict['주문체결시간']
             미체결수량 = stock_info_dict['미체결수량']
             주문구분 = stock_info_dict['주문구분']
+            # 주문체결시간을 시간, 분, 초로 나누어 datetime 객체 생성
             order_time = datetime.datetime.now().replace(
                 hour = int(주문체결시간[:-4]),
                 minute = int(주문체결시간[-4:-2]),
@@ -48,13 +48,13 @@ class KiwoomAPI(QMainWindow):
             if 주문구분 == "매수" and datetime.datetime.now() - order_time >= datetime.timedelta(seconds = 10):
                 print(f"종목코드: {종목코드}, 주문번호: {주문번호}, 미체결수량: {미체결수량}, 매수 취소 주문!")
                 self.send_order(
-                    "매수취소주문", # 사용자 구분명
+                    "매수정정주문", # 사용자 구분명
                     "5000",             # 화면번호
                     self.account_num,   # 계좌 번호
-                    3,                  # 주문유형, 1:신규매수, 2:신규매도, 3:매수취소, 4:매도취소, 5:매수정정, 6:매도정정
-                    "039490",           # 종목코드
+                    5,                  # 주문유형, 1:신규매수, 2:신규매도, 3:매수취소, 4:매도취소, 5:매수정정, 6:매도정정
+                    "039490",           # 종목코드 키움증권권
                     미체결수량,                 # 주문 수량
-                    ""                  # 주문 가격, 시장가의 경우 공백
+                    140000,                  # 주문 가격, 시장가의 경우 공백
                     "00",               # 주문 유형, 00: 지정가, 03: 시장가, 05: 조건부지정가, 06: 최유리지정가, 07: 최우선지정가 등 (KOAStudio 참고)
                     주문번호,                 # 주문번호 (정정 주문의 경우 사용, 나머지는 공백)
                 )
@@ -63,13 +63,13 @@ class KiwoomAPI(QMainWindow):
             elif 주문구분 == "매도" and datetime.datetime.now() - order_time >= datetime.timedelta(seconds = 10):
                 print(f"종목코드: {종목코드}, 주문번호: {주문번호}, 미체결수량: {미체결수량}, 매도 취소 주문!")
                 self.send_order(
-                    "매도취소주문", # 사용자 구분명
+                    "매도정정주문", # 사용자 구분명
                     "5000",             # 화면번호
                     self.account_num,   # 계좌 번호
-                    4,                  # 주문유형, 1:신규매수, 2:신규매도, 3:매수취소, 4:매도취소, 5:매수정정, 6:매도정정
-                    "039490",           # 종목코드
+                    6,                  # 주문유형, 1:신규매수, 2:신규매도, 3:매수취소, 4:매도취소, 5:매수정정, 6:매도정정
+                    "039490",           # 종목코드 키움증권
                     미체결수량,                 # 주문 수량
-                    ""                  # 주문 가격, 시장가의 경우 공백
+                    100000,                  # 주문 가격, 시장가의 경우 공백
                     "00",               # 주문 유형, 00: 지정가, 03: 시장가, 05: 조건부지정가, 06: 최유리지정가, 07: 최우선지정가 등 (KOAStudio 참고)
                     주문번호,                 # 주문번호 (정정 주문의 경우 사용, 나머지는 공백)
                 )
@@ -114,10 +114,6 @@ class KiwoomAPI(QMainWindow):
         )
 
 
-    
-
-
-
     def _set_signal_slots(self):
         self.kiwoom.OnEventConnect.connect(self._event_connect)
         self.kiwoom.OnReceiveChejanData.connect(self._receive_chejandata)
@@ -146,7 +142,7 @@ class KiwoomAPI(QMainWindow):
         ret = self.kiwoom.dynamicCall("GetChejanData(int)", nFid)
         return ret
     
-    def receive_chejandata(self, sGubun, nItemCnt, sFidList):
+    def _receive_chejandata(self, sGubun, nItemCnt, sFidList):
         #sGubun: 체결구분 접수와 체결시 '0'값, 국내주식 잔고전달은 '1'값, 파생잔고 전달은 '4'
         if sGubun == "0":
             종목코드 = self.get_chejandata(9001).replace("A", "").strip()
@@ -182,7 +178,7 @@ class KiwoomAPI(QMainWindow):
 
     
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    kiwoom_api = KiwoomAPI()
-    kiwoom_api.show()
-    sys.exit(app.exec_())
+    app = QApplication(sys.argv) # QApplication 객체 생성, 이벤트 루프를 시작하기 위해 필요, sys.argv는 명령행 인수를 전달하는 리스트
+    kiwoom_api = KiwoomAPI() # KiwoomAPI 객체 생성, 이 객체를 통해 키움증권 API를 사용
+    kiwoom_api.show() # 창을 화면에 표시, 이 코드가 없으면 창이 나타나지 않음
+    sys.exit(app.exec_()) # 이벤트 루프를 시작, 이벤트 루프가 종료되면 프로그램이 종료됨
