@@ -1,0 +1,2764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1786</width>
+    <height>882</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>441</width>
+      <height>751</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>종목1</string>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>종목코드</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>20</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>50</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>141</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1회 주문 금액 또는 수량</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>100</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 주문</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_2">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>120</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 주문</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>50</y>
+       <width>76</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>수량(주)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>금액(원)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>금액(달러)</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>140</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 10호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>170</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 9호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>200</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 8호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 7호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>260</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 6호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>290</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 5호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>320</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 4호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_8">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>350</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 3호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_9">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>380</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 2호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_10">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>410</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 1호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_11">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>410</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 1호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_12">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>380</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 2호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_13">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>350</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 3호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_14">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>290</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 5호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_15">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>320</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 4호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_16">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>260</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 6호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_17">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>230</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 7호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_18">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>140</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 10호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_19">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>170</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 9호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_20">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>200</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 8호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_21">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>500</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 3호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_22">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>560</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 5호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_23">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>530</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 4호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_24">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>530</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 4호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_25">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>470</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 2호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_26">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>650</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 8호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_27">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>650</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 8호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_28">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>710</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 10호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_29">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>710</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 10호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_30">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>440</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 1호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_31">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>500</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 3호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_32">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>590</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 6호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_33">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>680</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 9호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_34">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>620</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 7호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_35">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>590</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 6호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_36">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>560</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 5호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_37">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>440</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 1호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_38">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>620</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 7호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_39">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>470</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 2호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_40">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>680</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 9호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_41">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>20</y>
+       <width>111</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>실시간 데이터 연동</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_5">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>20</y>
+       <width>76</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>키움증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>한국투자증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>대신증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>빗썸</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>BIKA</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Trading View</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>30</y>
+      <width>441</width>
+      <height>741</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>종목2</string>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>종목코드</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>20</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_4">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>50</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>141</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1회 주문 금액 또는 수량</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_3">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>100</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 주문</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_4">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>120</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 주문</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_2">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>50</y>
+       <width>76</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>수량(주)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>금액(원)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>금액(달러)</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton_42">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>140</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 10호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_43">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>170</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 9호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_44">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>200</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 8호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_45">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 7호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_46">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>260</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 6호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_47">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>290</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 5호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_48">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>320</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 4호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_49">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>350</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 3호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_50">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>380</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 2호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_51">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>410</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 1호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_52">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>410</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 1호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_53">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>380</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 2호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_54">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>350</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 3호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_55">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>290</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 5호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_56">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>320</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 4호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_57">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>260</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 6호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_58">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>230</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 7호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_59">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>140</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 10호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_60">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>170</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 9호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_61">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>200</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 8호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_62">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>500</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 3호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_63">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>560</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 5호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_64">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>530</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 4호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_65">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>530</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 4호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_66">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>470</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 2호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_67">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>650</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 8호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_68">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>650</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 8호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_69">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>710</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 10호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_70">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>710</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 10호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_71">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>440</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 1호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_72">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>500</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 3호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_73">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>590</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 6호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_74">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>680</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 9호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_75">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>620</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 7호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_76">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>590</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 6호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_77">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>560</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 5호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_78">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>440</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 1호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_79">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>620</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 7호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_80">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>470</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 2호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_81">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>680</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 9호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_82">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>20</y>
+       <width>111</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>실시간 데이터 연동</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_6">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>20</y>
+       <width>76</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>키움증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>한국투자증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>대신증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>빗썸</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>BIKA</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Trading View</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>30</y>
+      <width>441</width>
+      <height>741</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>종목3</string>
+    </property>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>종목코드</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_5">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>20</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_6">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>50</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>141</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1회 주문 금액 또는 수량</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_5">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>100</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 주문</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_6">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>120</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 주문</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_3">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>50</y>
+       <width>76</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>수량(주)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>금액(원)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>금액(달러)</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton_83">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>140</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 10호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_84">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>170</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 9호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_85">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>200</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 8호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_86">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 7호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_87">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>260</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 6호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_88">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>290</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 5호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_89">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>320</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 4호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_90">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>350</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 3호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_91">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>380</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 2호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_92">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>410</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 1호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_93">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>410</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 1호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_94">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>380</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 2호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_95">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>350</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 3호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_96">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>290</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 5호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_97">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>320</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 4호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_98">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>260</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 6호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_99">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>230</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 7호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_100">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>140</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 10호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_101">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>170</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 9호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_102">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>200</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 8호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_103">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>500</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 3호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_104">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>560</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 5호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_105">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>530</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 4호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_106">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>530</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 4호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_107">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>470</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 2호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_108">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>650</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 8호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_109">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>650</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 8호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_110">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>710</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 10호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_111">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>710</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 10호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_112">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>440</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 1호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_113">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>500</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 3호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_114">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>590</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 6호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_115">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>680</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 9호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_116">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>620</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 7호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_117">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>590</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 6호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_118">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>560</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 5호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_119">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>440</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 1호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_120">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>620</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 7호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_121">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>470</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 2호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_122">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>680</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 9호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_123">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>20</y>
+       <width>111</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>실시간 데이터 연동</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_7">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>20</y>
+       <width>76</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>키움증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>한국투자증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>대신증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>빗썸</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>BIKA</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Trading View</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>1350</x>
+      <y>30</y>
+      <width>441</width>
+      <height>741</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>종목4</string>
+    </property>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>종목코드</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_7">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>20</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_8">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>50</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>141</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1회 주문 금액 또는 수량</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_7">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>100</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 주문</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_8">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>120</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 주문</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_4">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>50</y>
+       <width>76</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>수량(주)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>금액(원)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>금액(달러)</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton_124">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>140</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 10호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_125">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>170</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 9호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_126">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>200</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 8호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_127">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 7호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_128">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>260</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 6호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_129">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>290</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 5호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_130">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>320</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 4호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_131">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>350</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 3호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_132">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>380</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 2호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_133">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>410</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 1호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_134">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>410</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 1호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_135">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>380</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 2호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_136">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>350</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 3호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_137">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>290</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 5호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_138">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>320</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 4호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_139">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>260</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 6호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_140">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>230</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 7호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_141">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>140</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 10호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_142">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>170</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 9호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_143">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>200</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매도 8호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_144">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>500</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 3호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_145">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>560</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 5호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_146">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>530</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 4호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_147">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>530</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 4호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_148">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>470</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 2호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_149">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>650</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 8호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_150">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>650</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 8호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_151">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>710</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 10호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_152">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>710</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 10호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_153">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>440</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 1호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_154">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>500</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 3호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_155">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>590</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 6호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_156">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>680</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 9호가 </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_157">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>620</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 7호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_158">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>590</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 6호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_159">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>560</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 5호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_160">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>440</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 1호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_161">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>620</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 7호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_162">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>470</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 2호가</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_163">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>680</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>매수 9호가 잔량</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_164">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>20</y>
+       <width>111</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>실시간 데이터 연동</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_8">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>20</y>
+       <width>76</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>키움증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>한국투자증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>대신증권</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>빗썸</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>BIKA</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Trading View</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1786</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

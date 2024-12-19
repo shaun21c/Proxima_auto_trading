@@ -43,7 +43,7 @@ class KiwoomAPI(QMainWindow):
                 minute = int(주문체결시간[-4:-2]),
                 second = int(주문체결시간[-2:])
             )
-
+            # 주문체결시간이 10초 이상 지났을 때
             if 주문구분 == "매수" and datetime.datetime.now() - order_time >= datetime.timedelta(seconds = 10):
                 print(f"종목코드: {종목코드}, 주문번호: {주문번호}, 미체결수량: {미체결수량}, 매수 취소 주문!")
                 self.send_order(
@@ -58,7 +58,7 @@ class KiwoomAPI(QMainWindow):
                     주문번호,                 # 주문번호 (정정 주문의 경우 사용, 나머지는 공백)
                 )
                 pop_list.append(주문번호)
-            
+            # 주문체결시간이 10초 이상 지났을 때
             elif 주문구분 == "매도" and datetime.datetime.now() - order_time >= datetime.timedelta(seconds = 10):
                 print(f"종목코드: {종목코드}, 주문번호: {주문번호}, 미체결수량: {미체결수량}, 매도 취소 주문!")
                 self.send_order(
@@ -111,10 +111,6 @@ class KiwoomAPI(QMainWindow):
             "00",               # 주문 유형, 00: 지정가, 03: 시장가, 05: 조건부지정가, 06: 최유리지정가, 07: 최우선지정가 등 (KOAStudio 참고)
             "",                 # 주문번호 (정정 주문의 경우 사용, 나머지는 공백)
         )
-
-
-    
-
 
 
     def _set_signal_slots(self):

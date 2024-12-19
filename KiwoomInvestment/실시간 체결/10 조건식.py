@@ -15,11 +15,11 @@ class KiwoomAPI(QMainWindow):
         self._login()
 
     def _set_signal_slots(self):
-        self.kiwoom.OnEventConnect.connect(self._event_connect)
-        self.kiwoom.OnReceiveRealData.connect(self._receive_realdata)
-        self.kiwoom.OnReceiveConditionVer.connect(self._receive_condition)
-        self.kiwoom.OnReceiveRealCondition.connect(self._receive_real_condition)
-        self.kiwoom.OnReceiveTrCondition.connect(self._receive_tr_condition)
+        self.kiwoom.OnEventConnect.connect(self._event_connect) # 로그인 결과 수신 이벤트
+        self.kiwoom.OnReceiveRealData.connect(self._receive_realdata) # 실시간 데이터 수신 이벤트
+        self.kiwoom.OnReceiveConditionVer.connect(self._receive_condition) # 조건식 수신 이벤트
+        self.kiwoom.OnReceiveRealCondition.connect(self._receive_real_condition) # 실시간 조건검색 이벤트
+        self.kiwoom.OnReceiveTrCondition.connect(self._receive_tr_condition) # 실시간 아닌 조건검색 이벤트
 
     def _login(self):
         ret = self.kiwoom.dynamicCall("CommConnect()")
@@ -34,6 +34,7 @@ class KiwoomAPI(QMainWindow):
             raise Exception("로그인 실패!")
         
     def _after_login(self):
+        """ 로그인 성공 후 실행할 코드 """
         print("조건 검색 정보 요청")
         self.kiwoom.dynamicCall("GetConditionLoad()")   # 조건 검색 정보 요청
 
@@ -57,9 +58,10 @@ class KiwoomAPI(QMainWindow):
         # strConditionIndex: 조건명 인덱스
         print(f"Received real condition, {strCode}, {strType}, {strConditionName}, {strConditionIndex}")
         if strType == "I" and strCode not in self.realtime_registered_codes:
-            self.register_code_to_realtime_list(strCode)
+            self.register_code_to_realtime_List(strCode)
 
-    def _receive_tr_condition(self, scrNum, strCodeList, strConditionName, nIndex, nNext):
+    def _receive_tr_condition(self, scrNum, strCodeList, strConditionName, nIndex, nNext) -> None:
+        """조건검색 결과 수신 이벤트"""
         print(f"Received TR Condition, strCodeList: {strCodeList}, strConditionName: {strConditionName}, "
               f"nIndex: {nIndex}, nNext: {nNext}, scrNum: {scrNum}")
         for stock_code in strCodeList.split(';'):
@@ -83,7 +85,7 @@ class KiwoomAPI(QMainWindow):
                 self.send_condition(self._get_realtime_data_screen_num(), condition_name, condition_idx, 1)
 
     def send_condition(self, scrNum, condition_name, nidx, nsearch):
-        # nSearch: 조회구분, 0: 조건검색, 1: 실시간 조건검색
+        # nSearch: 조회구분, 0: 조건검색, 1: 조건검색 + 실시간 조건검색
         result = self.kiwoom.dynamicCall("SendCondition(QString, QString, int, int)", scrNum, condition_name, nidx, nsearch)
         if result == 1:
             print(f"{condition_name} 조건검색 등록")

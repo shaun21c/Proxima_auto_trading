@@ -4,7 +4,8 @@ from loguru import logger
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from PyQt5.QAxContainer import QAxWidget
-from PyQt5.Qtcore import QTimer
+from PyQt5.QtCore import QTimer
+
 
 class KiwoomAPI(QMainWindow):
     def __init__(self):
@@ -22,23 +23,16 @@ class KiwoomAPI(QMainWindow):
                 "보유수량",
                 "매입가",
                 "현재가",
+                "매입후고가",
             ]
         )
-        self.stop_loss_threshold = - 1.5 # 평단가 대비 -1.5% 이하로 떨어질 경우
+        self.trailing_stop_loss_threshold = - 1.5 # 매수 후 고가대비 -1.5% 이하로 떨어질 경우 시장가 매도 주문
 
         self.kiwoom = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
         self._set_signal_slots()    # 키움증권 API와 내부 메소드를 연동
         self._login()
         self.timer1 = QTimer()
         self.timer1.timeout.connect(self.get_account_balance)
-
-
-    def get_account_balance(self):
-        self.set_input_value("계좌번호", self.account_num)
-        self.set_input_value("비밀번호", "")
-        self.set_input_value("비밀번호입력매체구분", "00")
-        self.set_input_value("조회구분", "2")
-        self.comm_rq_data("opw00018_req", "opw00018", 0, self._get_screen_num())
 
     def btn1_clicked(self):
         if "039490" not in self.realtime_registered_codes:
@@ -58,6 +52,7 @@ class KiwoomAPI(QMainWindow):
             "보유수량": 0,
             "매입가": None,
             "현재가": None,
+            "매입후고가": None,
         }
 
     def get_account_info(self):
@@ -69,7 +64,7 @@ class KiwoomAPI(QMainWindow):
     def _set_signal_slots(self):
         self.kiwoom.OnEventConnect.connect(self._event_connect)
         self.kiwoom.OnReceiveRealData.connect(self._receive_realdata)
-        self.kiwoom.OnReceiveTrData.connect(self.receive_tr_data)
+        self.kiwoom.OnReceiveTrData.connect(self._receive_tr_data)
         self.kiwoom.OnReceiveChejanData.connect(self.receive_chejandata)
         self.kiwoom.OnReceiveMsg.connect(self.receive_msg)
 
@@ -127,11 +122,12 @@ class KiwoomAPI(QMainWindow):
             등락률 = float(self._get_comm_realdata(sRealType, 12))
             체결시간 = self._get_comm_realdata(sRealType, 20)
             print(f"종목코드: {sJongmokCode}, 체결시간: {체결시간}, 현재가: {현재가}, 등락률: {등락률} ")
-            매입가 = self.realtime_watchlist_df.loc[sJongmokCode, "매입가"]
-            if 매입가 is None:
-                return
-            수익률 = (현재가 - 매입가) / 매입가 * 100
-            if 수익률 <= self.stop_loss_threshold:
+            self.realtime_watchlist_df.loc[sJongmokCode, "현재가"] = 현재가
+            매입후고가 = self.realtime_watchlist_df.loc[sJongmokCode, "매입후고가"]
+            매입후고가 = max(현재가, 매입후고가) if 매입후고가 else 현재가
+            self.realtime_watchlist_df.loc[sJongmokCode, "매입후고가"] = 매입후고가
+            고가대비등락률 = (현재가 - 매입후고가) / 매입후고가 * 100
+            if 고가대비등락률 <= self.trailing_stop_loss_threshold:
                 print(f"종목코드: {sJongmokCode}, 시장가 매도 진행")
                 self.send_order(
                     "시장가매도주문",           # 사용자 구분명
@@ -180,6 +176,7 @@ class KiwoomAPI(QMainWindow):
         if sGubun == 1:
             print("잔고통보")
 
+
     def receive_msg(self, sScrNo, sRQName, sTrCode, sMsg):
         print(f"Received MSG! 화면번호: {sScrNo}, 사용자 구분명: {sRQName}, TR이름: {sTrCode}, 메시지: {sMsg}")
 
@@ -189,11 +186,17 @@ class KiwoomAPI(QMainWindow):
     def comm_rq_data(self, rqname, trcode, next, screen_no):
         self.kiwoom.dynamicCall("CommRqData(QString, QString, int, QString)", rqname, trcode, next, screen_no)
 
+
     def _receive_tr_data(self, screen_no, rqname, trcode, recode_name, next, unused1, unused2, unused3, unused4):
-        self.is_remained_data = next == '2'
-        print(next)
         if rqname == "opt00018_req":
             self._on_opt00018_req(rqname, trcode)
+
+    def get_account_balance(self):
+        self.set_input_value("계좌번호", self.account_num)
+        self.set_input_value("비밀번호", "")
+        self.set_input_value("비밀번호입력매체구분", "00")
+        self.set_input_value("조회구분", "2")
+        self.comm_rq_data("opw00018_req", "opw00018", 0, self._get_screen_num())
 
     def _comm_get_data(self, code, real_type, field_name, index, item_name):
         ret = self.kiwoom.dynamicCall("CommGetData(QString, QString, QString, int, QString)", code,
@@ -211,11 +214,9 @@ class KiwoomAPI(QMainWindow):
             self.realtime_watchlist_df.loc[종목코드, "보유수량"] = 보유수량
             self.realtime_watchlist_df.loc[종목코드, "매입가"] = 매입가
         print(self.realtime_watchlist_df)
-        
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     kiwoom_api = KiwoomAPI()
     sys.exit(app.exec_())
-
-
-

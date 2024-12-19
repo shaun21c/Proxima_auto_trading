@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1021</width>
+    <height>0</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>30</y>
+      <width>501</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Gulim'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;API 계좌 호환 가능 여부 (호출제한 등에 걸리는지 파악하는 계산 알고리즘 추가 필요)&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>70</y>
+      <width>921</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>계좌1</string>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Selection Engine</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>80</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>사용자 지정</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>종목 클래스1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>종목 클래스2</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>170</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Order Book Stop Loss</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>60</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Portfolio Engine</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>110</y>
+       <width>601</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Gulim'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;해당 종목클래스에 포함하는 자산 목록 + 계좌에 들어있는 금액이 기본 설정(Buy&amp;amp;Hold 전략과 Equally Weight Portfolio)에 의해 배분됨. 물론 다른 시그널 및 포트폴리오 엔진을 설정하면 바뀌겠끔 진행.즉 포트폴리오 연산이 완료된 배분 비율이 보여짐&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ex) 계좌 금액: 100만원&lt;br /&gt;삼성전자		50만원&lt;br /&gt;구글		20만원	&lt;br /&gt;비트코인		10만원&lt;br /&gt;금		20만원&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>60</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Signal Engine</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_2">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>80</y>
+       <width>131</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Buy&amp;Hold (Default)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>무페토</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Kai Bold</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>230</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Event Stop Loss</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_5">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>250</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>계엄령</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>전쟁</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_3">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>80</y>
+       <width>211</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Equally Weight Portfolio (Default)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Most Diversified Portfolio</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Black Litterman Model</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_6">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>190</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Flash Crash</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>100</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Technical Stop Loss</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>50</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Risk Engine</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_4">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>120</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Stop Loss (-2%)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Trailing Stop (-3%)</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>계좌번호(ex. 123456789)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>20</y>
+       <width>181</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>계좌잔고(ex. 100만원 혹은 달러)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_28">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>20</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Strategy</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_20">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>20</y>
+       <width>281</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>전략의 정의는 아래의 4개의 엔진 모두 합한 것</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>사용자 정의(Default)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>전략1</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QComboBox" name="comboBox_7">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>30</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>증권거래소 선택</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>키움증권</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>한국투자증권</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>380</y>
+      <width>921</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>계좌1</string>
+    </property>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Selection Engine</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_8">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>80</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>사용자 지정</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>종목 클래스1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>종목 클래스2</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>170</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Order Book Stop Loss</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>60</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Portfolio Engine</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_3">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>110</y>
+       <width>601</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Gulim'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;해당 종목클래스에 포함하는 자산 목록 + 계좌에 들어있는 금액이 기본 설정(Buy&amp;amp;Hold 전략과 Equally Weight Portfolio)에 의해 배분됨. 물론 다른 시그널 및 포트폴리오 엔진을 설정하면 바뀌겠끔 진행.즉 포트폴리오 연산이 완료된 배분 비율이 보여짐&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ex) 계좌 금액: 100만원&lt;br /&gt;삼성전자		50만원&lt;br /&gt;구글		20만원	&lt;br /&gt;비트코인		10만원&lt;br /&gt;금		20만원&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>60</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Signal Engine</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_9">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>80</y>
+       <width>131</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Buy&amp;Hold (Default)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>무페토</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Kai Bold</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>230</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Event Stop Loss</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_10">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>250</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>계엄령</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>전쟁</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_11">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>80</y>
+       <width>211</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Equally Weight Portfolio (Default)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Most Diversified Portfolio</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Black Litterman Model</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_12">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>190</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Flash Crash</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>100</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Technical Stop Loss</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_16">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>50</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Risk Engine</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_13">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>120</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Stop Loss (-2%)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Trailing Stop (-3%)</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>계좌번호(ex. 123456789)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_18">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>20</y>
+       <width>181</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>계좌잔고(ex. 100만원 혹은 달러)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_29">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>20</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Strategy</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_21">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>20</y>
+       <width>281</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>전략의 정의는 아래의 4개의 엔진 모두 합한 것</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>690</y>
+      <width>921</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>계좌1</string>
+    </property>
+    <widget class="QLabel" name="label_19">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Selection Engine</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_14">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>80</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>사용자 지정</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>종목 클래스1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>종목 클래스2</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_20">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>170</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Order Book Stop Loss</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_21">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>60</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Portfolio Engine</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>110</y>
+       <width>601</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Gulim'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;해당 종목클래스에 포함하는 자산 목록 + 계좌에 들어있는 금액이 기본 설정(Buy&amp;amp;Hold 전략과 Equally Weight Portfolio)에 의해 배분됨. 물론 다른 시그널 및 포트폴리오 엔진을 설정하면 바뀌겠끔 진행.즉 포트폴리오 연산이 완료된 배분 비율이 보여짐&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ex) 계좌 금액: 100만원&lt;br /&gt;삼성전자		50만원&lt;br /&gt;구글		20만원	&lt;br /&gt;비트코인		10만원&lt;br /&gt;금		20만원&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_22">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>60</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Signal Engine</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_15">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>80</y>
+       <width>131</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Buy&amp;Hold (Default)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>무페토</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Kai Bold</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_23">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>230</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Event Stop Loss</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_16">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>250</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>계엄령</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>전쟁</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_17">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>80</y>
+       <width>211</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Equally Weight Portfolio (Default)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Most Diversified Portfolio</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Black Litterman Model</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_18">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>190</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Flash Crash</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_24">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>100</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Technical Stop Loss</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_25">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>50</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Risk Engine</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_19">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>120</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Stop Loss (-2%)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Trailing Stop (-3%)</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_26">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>계좌번호(ex. 123456789)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_27">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>20</y>
+       <width>181</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>계좌잔고(ex. 100만원 혹은 달러)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_30">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>10</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Strategy</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_22">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>10</y>
+       <width>281</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>전략의 정의는 아래의 4개의 엔진 모두 합한 것</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1021</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
