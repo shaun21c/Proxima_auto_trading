@@ -8,9 +8,8 @@ from PyQt5.QAxContainer import QAxWidget
 class KiwoomAPI(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.daily_data_df: pd.DatFrame = pd.DataFrame(columns = ['시간', '시가', '고가', '저가', '종가', '거래량'])
+        self.daily_data_df: pd.DataFrame = pd.DataFrame(columns = ['시간', '시가', '고가', '저가', '종가', '거래량'])
         self.account_num = None
-        
         btn1 = QPushButton("일봉데이터 print", self)
         btn1.move(190, 10)
         btn1.resize(200, 100)
@@ -30,10 +29,9 @@ class KiwoomAPI(QMainWindow):
         self.account_num = account_nums.split(';')[0]
         print(f"사용 계좌 번호: {self.account_num}")
 
-
     def get_account_balance(self):
         self.set_input_value("계좌번호", self.account_num)
-        self.set_input_value("비밀번호", "")
+        self.set_input_value("비밀번호", "0000")
         self.set_input_value("계좌번호", "00")
         self.set_input_value("계좌번호", "2")
         self.comm_rq_data("opw00018_req", "opw00018", 0, "5000")
@@ -49,7 +47,7 @@ class KiwoomAPI(QMainWindow):
         if err_code == 0:
             print("로그인 성공!")
         else:
-            print("로그린 실패!")
+            print("로그인 실패!")
         self.login_event_loop.exit()
 
     def request_remained_data(self):
@@ -67,7 +65,6 @@ class KiwoomAPI(QMainWindow):
         """
         self.kiwoom.dynamicCall("CommRqData(QString, QString, int, QString)", rqname, trcode, next, screen_no)
 
-
     def set_input_value(self, id, value):
         self.kiwoom.dynamicCall("SetInputValue(QString, QString)", id, value)
 
@@ -76,7 +73,6 @@ class KiwoomAPI(QMainWindow):
         self.set_input_value("기준일자", date)
         self.set_input_value("수정주가구분", 1) # 수정주가 사용
         self.comm_rq_data("opt10081_req", "opt10081", 2 if self.is_remained_data else 0, "5000")
-
 
     def _receive_tr_data(self, screen_no, rqname, trcode, recode_name, next, unused1, unused2, unused3, unused4):
         self.is_remained_data = next == '2'
@@ -109,7 +105,6 @@ class KiwoomAPI(QMainWindow):
                 '종가':int(close),
                 '거래량':int(volume),
             }
-
 
     def _on_opw00018_req(self, rqname, trcode):
         현재평가잔고 = int(self._comm_get_data(trcode, "", rqname, 0, "추정예탁자산"))
