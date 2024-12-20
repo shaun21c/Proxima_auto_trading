@@ -530,10 +530,10 @@ class KiwoomAPI(QMainWindow, form_class):
     def get_comm_real_data(self, strCode, nFid): # 496
         return self.kiwoom.dynamicCall("GetCommRealData(QString, int)", strCode, nFid)
     
-    def _receive_realdata(self, sCode, sRealType, sRealData): # 499
+    def _receive_realdata(self, sJongmokCode, sRealType, sRealData): # 499
         if sRealType == "주식체결":
             self.now_time = datetime.datetime.now()
-            now_price = int(self.get_comm_real_data(sCode, 10).replace("-", ""))
+            now_price = int(self.get_comm_real_data(sRealType, 10).replace("-", ""))
             if sJongmokCode in self.realtime_watchlist_df.index.to_list():
                 if not self.realtime_watchlist_df.loc[sJongmokCode, "매수주문완료여부"]:
                     goal_price = now_price * (1 + float(self.goalReturnLineEdit.text()) / 100)
