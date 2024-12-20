@@ -22,9 +22,9 @@ def request_crawling(req_in_queue: Queue, req_out_queue: Queue, thread_event: Ev
         if req_in_queue.empty():
             time.sleep(0.1) # 쓰레드가 과도하게 돌아가지 않게 방지
             continue
-        req_data_dict = req_in_queue.get()
-        if req_data_dict['action_id'] == '크롤링요청':
-            try:
+        req_data_dict = req_in_queue.get() # 큐에서 데이터를 가져옴, get()은 큐가 비어있으면 대기하다가 데이터가 들어오면 가져옴 
+        if req_data_dict['action_id'] == '크롤링요청': # 큐에서 가져온 데이터의 action_id가 크롤링요청이면
+            try: # 크롤링을 시도
                 resultXML = urlopen(req_data_dict['url'])
                 result = resultXML.read()
                 xmlsoup = BeautifulSoup(result, 'xml')
@@ -88,6 +88,7 @@ class MainWindow(QMainWindow, form_class):
         QApplication.instance().quit()
 
 if __name__ == '__main__':
+    # 크롤링 요청 큐, 크롤링 결과 큐, 스레드 이벤트를 생성
     crawling_req_in_queue = Queue()
     crawling_out_queue = Queue()
     thread_event = Event()
@@ -100,9 +101,10 @@ if __name__ == '__main__':
 
         )
     )
-
-    crawling_thread.start()
+    # 스레드란? 프로세스 내에서 실행되는 흐름의 단위
+    crawling_thread.start() # 크롤링 스레드 시작
     app = QApplication(sys.argv)
+    # 메인 윈도우 생성후 크롤링 큐, 크롤링 결과 큐, 스레드 이벤트를 인자로 넘겨줌
     mainWindow = MainWindow(crawling_req_in_queue, crawling_out_queue, thread_event)
     mainWindow.show()
     sys.exit(app.exec_())

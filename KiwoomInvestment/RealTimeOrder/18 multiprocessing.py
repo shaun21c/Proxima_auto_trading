@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QTimer, QCoreApplication
 from PyQt5 import uic
 
-form_class = uic.loadUiType("main.ui")[0]
+form_class = uic.loadUiType(r"C:\Users\shaun\OhSeohyeon\Hilbert_technology\Proxima_auto_trading\KiwoomInvestment\RealTimeOrder\99 main.ui")[0]
 
 
 def request_crawling(req_in_queue: Queue, req_out_queue: Queue, process_event: Event):
@@ -88,7 +88,11 @@ class MainWindow(QMainWindow, form_class):
 
 
 # Threading => 메인프로세스와 CPU 자원을 공유 => CPU Intensice X / IO 작업들 / 크롤링 등 요청의 받는데 pending 되는 작업들 등.
-# Process => CPU Intensive 작업 (차트데이터에서 다양한 보조지표 생성 작업)
+# 즉, 읽고 쓰는 작업이 많은 경우에 사용
+# Process => CPU Intensive 작업 (차트데이터에서 다양한 보조지표 생성 작업) (연산 작업이 많은 작업들)
+# CPU Intensive 작업이란 CPU 자원을 많이 사용하는 작업들을 의미
+# CPU Intensive 작업은 CPU 자원을 많이 사용하기 때문에 멀티프로세스로 처리하는 것이 좋음
+# 즉, 계산이 많이 필요한 작업들에 사용
 
 if __name__ == '__main__':
     crawling_req_in_queue = Queue()
