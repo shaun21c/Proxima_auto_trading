@@ -10,7 +10,7 @@ from loguru import logger
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.Qtcore import QTimer
+from PyQt5.QtCore import QTimer
 from PyQt5 import uic
 
 form_class = uic.loadUiType("main.ui")[0]

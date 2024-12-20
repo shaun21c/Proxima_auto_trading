@@ -6,12 +6,11 @@ import datetime
 from loguru import logger
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.Qtcore import QThread, pyqtSignal
+from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5 import uic
 
-form_class = uic.loadUiType("main.ui")[0]
+form_class = uic.loadUiType(r"C:\Users\shaun\OhSeohyeon\Hilbert_technology\Proxima_auto_trading\KiwoomInvestment\RealTimeOrder\99 main.ui")[0]
 
 class WorkerThread(QThread):
     data_processed = pyqtSignal(dict)   # Signal to send processed data back
@@ -42,18 +41,16 @@ class WorkerThread(QThread):
             except Exception as e:
                 logger.exception(e)
 
-                
-
 class MainWindow(QMainWindow, form_class):
     new_data_signal = pyqtSignal(dict)  # Signal to send data to the worker
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        # main.ui의 reqDartPushButton 버튼을 누르면 request_crawling 함수 실행
         self.reqDartPushButton.clicked.connect(self.request_crawling)
         self.worker = WorkerThread()    # Worker instance
         self.thread = QThread()         # Thread instance
         self.worker.moveToThread(self.thread)   # Move worker to the thread
-
         # Connect signals
         self.worker.data_processed.connect(self.on_data_processed)  # Connect to receive processed data
         self.new_data_signal.connect(self.worker.process_data)
@@ -74,12 +71,12 @@ class MainWindow(QMainWindow, form_class):
             )
         
 
-        def on_data_processed(self, processed_data_dict):
-            if processed_data_dict['action_id'] == "크롤링 요청":
-                self.resultTextEdit.append(
-                    f"공시번호: {processed_data_dict['공시번호']}, 종목코드: {processed_data_dict['종목코드']}, "
-                    f"종목명: {processed_data_dict['종목명']}, 공시제목: {processed_data_dict['공시제목']}"
-                )
+    def on_data_processed(self, processed_data_dict):
+        if processed_data_dict['action_id'] == "크롤링 요청":
+            self.resultTextEdit.append(
+                f"공시번호: {processed_data_dict['공시번호']}, 종목코드: {processed_data_dict['종목코드']}, "
+                f"종목명: {processed_data_dict['종목명']}, 공시제목: {processed_data_dict['공시제목']}"
+            )
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
