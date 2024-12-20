@@ -7,11 +7,11 @@ dart_api_key = ""
 
 def main():
     start_date = datetime.datetime().strftime("%Y%m%d")
-    url = f""
+    url = f"http://opendart.fss.or.kr/api/list.xml?crtfc_key={dart_api_key}&bgn_de={start_date}&page_count=8&page_no=1"
     resultXML = urlopen(url)
     result = resultXML.read()
     xmlsoup = BeautifulSoup(result, 'xml')
-    for t in xmlsoup.findAll("list"):
+    for t in xmlsoup.findAll("list"): # list 태그를 모두 찾는다.
         for t in xmlsoup.findAll("list"):
             rcept_no = t.rcept_no_string
             stock_code = t.stock_code.string

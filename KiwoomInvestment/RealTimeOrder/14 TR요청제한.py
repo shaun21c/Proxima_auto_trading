@@ -6,7 +6,7 @@ from queue import Queue
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from PyQt5.QAxContainer import QAxWidget
-from PyQt5.Qtcore import QTimer
+from PyQt5.QtCore import QTimer
 
 class KiwoomAPI(QMainWindow):
     def __init__(self):
@@ -26,8 +26,8 @@ class KiwoomAPI(QMainWindow):
 
         self._login()
 
-        self.req_opt10019_timer = QTimer()
-        self.req_opt10019_timer.timeout.connect(self.get_tmp_high_volatility_info)
+        self.req_account_info_timer = QTimer()
+        self.req_account_info_timer.timeout.connect(self.get_account_info)
         self.tr_req_check_timer = QTimer()
         self.tr_req_check_timer.timeout.connect(self._send_tr_request)
         self.tr_req_check_timer.start(100)  # 0.1초마다 한번 Execute
@@ -45,82 +45,20 @@ class KiwoomAPI(QMainWindow):
         self.kiwoom.OnEventConnect.connect(self._event_connect)
         self.kiwoom.OnReceiveTrData.connect(self._receive_tr_data)
 
-
-    def _login(self):
-        ret = self.kiwoom.dynamicCall("CommConnect()")
-        if ret == 0:
-            logger.info("로그인 창 열기 성공!")
     
-
-    def _event_connect(self, err_code):
-        if err_code == 0:
-            logger.info("로그인 성공!")
-            self._after_login() # 현재 계좌 정보 요청
-        else:
-            raise Exception("로그인 실패!")
-    
-    
-    def _after_login(self):
-        self.get_account_num()
-        self.req_account_info_timer.start(200)  # 0.2
-
-
-    def set_input_value(self, id, value):
-        self.kiwoom.dynamicCall("SetInputValue(QString, QString)", id, value)
-
-    def _comm_rq_data(self, rqname, trcode, next, screen_no):
-        self.kiwoom.dynamicCall("CommRqData(QString, QString, int, QString)", rqname, trcode, next, screen_no)
-
-    def comm_rq_data(self, rqname, trcode, next, screen_no):
-        self.kiwoom.dynamicCall("CommRqData(QString, QString, int, QString)", rqname, trcode, next, screen_no)
-
-
     def _get_repeat_cnt(self, trcode, rqname):
         ret = self.kiwoom.dynamicCall("GetRepeatCnt(QString, QString)", trcode, rqname)
         return ret
-
-
-    def _on_opt10019_req(self, rqname, trcode):
-        data_cnt = self._get_repeat_cnt(trcode, rqname)
-        for i in range(data_cnt):
-            종목코드 = self._comm_get_data(trcode, "", rqname, i, "종목코드")
-            종목분류 = self._comm_get_data(trcode, "", rqname, i, "종목분류")
-            종목명 = self._comm_get_data(trcode, "", rqname, i, "종목명")
-            전일대비기호 = self._comm_get_data(trcode, "", rqname, i, "전일대비기호")
-            전일대비 = self._comm_get_data(trcode, "", rqname, i, "전일대비")
-            등락률 = self._comm_get_data(trcode, "", rqname, i, "등락률")
-            기준가 = self._comm_get_data(trcode, "", rqname, i, "기준가")
-            현재가 = self._comm_get_data(trcode, "", rqname, i, "현재가")
-            기준대비 = self._comm_get_data(trcode, "", rqname, i, "기준대비")
-            거래량 = self._comm_get_data(trcode, "", rqname, i, "거래량")
-            급등률 = self._comm_get_data(trcode, "", rqname, i, "급등률")
-            logger.info(f"종목코드: {종목코드}, 종목분류: {종목분류}, 종목명: {종목명}")
 
 
     def _receive_tr_data(self, screen_no, rqname, trcode, record_name, next, unused1, unused2, unused3, unused4):
         logger.info(f"Received TR data, rqname: {rqname}")
         if rqname == "opw00018_req":
             self._on_opw00018_req(rqname, trcode)
-        elif rqname == "opt10019_req":
-            self._on_opt10019_req(rqname, trcode)
-
-
-    def request_opt10019(self, target_market = "000", is_upside = True):
-        self._set_input_value("시장구분", target_market)    # KOSPI, KOSDAQ, 전체
-        self._set_input_value("등락구분", "1" if is_upside else "2")    # 급등 기준
-        self._set_input_value("시간구분", "1")    # 1분전
-        self._set_input_value("시간", "분")    # 분
-        self._set_input_value("거래량구분", "1" "00100")    # 10만주
-        self._set_input_value("종목조건", "0")    # 전체조회
-        self._set_input_value("신용조건", "0")    # 전체조회
-        self._set_input_value("가격조건", "0")    # 전체조회
-        self._set_input_value("상하한포함", "0")    # 미포함
-        self._comm_rq_data("opt10019_req", "opt10019", 0, self._get_tr_req_screen_num())
-        
 
     def request_opw00018(self):
         self._set_input_value("계좌번호", self.account_num)
-        self._set_input_value("비밀번호", "")
+        self._set_input_value("비밀번호", "0000")
         self._set_input_value("비밀번호입력매체구분", "00")
         self._comm_rq_data("opw00018_req", "opw00018", 0, self._get_tr_req_screen_num())
 
@@ -142,7 +80,7 @@ class KiwoomAPI(QMainWindow):
 
 
     def _is_check_tr_req_condition(self):
-        self.now_time = datetime.datetim.now()
+        self.now_time = datetime.datetime.now()
         if len(self.last_tr_send_times) >= self.max_send_per_sec and \
             self.now_time - self.last_tr_send_times[-self.max_send_per_sec] < datetime.timedelta(milliseconds = 1000):
             logger.info(f"초 단위 TR 요청 제한! Wait for time to send!")
@@ -158,6 +96,40 @@ class KiwoomAPI(QMainWindow):
         else:
             return True
 
+
+
+
+
+
+    def _login(self):
+        ret = self.kiwoom.dynamicCall("CommConnect()")
+        if ret == 0:
+            logger.info("로그인 창 열기 성공!")
+    
+
+    def _event_connect(self, err_code):
+        if err_code == 0:
+            logger.info("로그인 성공!")
+            self._after_login() # 현재 계좌 정보 요청
+        else:
+            raise Exception("로그인 실패!")
+    
+    
+    def _after_login(self):
+        self.get_account_num()
+        self.req_account_info_timer.start(200)  # 0.2
+
+    def _set_input_value(self, id, value):
+        self.kiwoom.dynamicCall("SetInputValue(QString, QString)", id, value)
+
+    def _comm_rq_data(self, rqname, trcode, next, screen_no):
+        self.kiwoom.dynamicCall("CommRqData(QString, QString, int, QString)", rqname, trcode, next, screen_no)
+
+    def _comm_get_data(self, code, real_type, field_name, index, item_name):
+        ret = self.kiwoom.dynamicCall("CommGetData(QString, QString, QString, int, QString)", code, real_type, field_name, index, item_name)
+        return ret
+    
+
     def _get_tr_req_screen_num(self):
         self.tr_req_scrnum += 1
         if self.tr_req_scrnum > 5200:
@@ -170,13 +142,8 @@ class KiwoomAPI(QMainWindow):
         self.account_num = account_nums.split(';')[0]
         logger.info(f"사용 계좌 번호: {self.account_num}")
 
-
-
-
-
-
-    def get_tmp_high_volatility_info(self):
-        self.tr_req_queue([self.request_opw10019, "001", True])
+    def get_account_info(self):
+        self.tr_req_queue.put([self.request_opw00018])
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
