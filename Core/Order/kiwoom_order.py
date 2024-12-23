@@ -23,20 +23,20 @@ class KiwoomOrder:
         
         # 거래구분 코드
         self.trade_types  = {
-            "LIMIT": "00",           # 지정가
-            "MARKET": "03",          # 시장가
-            "CONDITIONAL": "05",     # 조건부지정가
-            "BEST_LIMIT": "06",      # 최유리지정가
-            "BEST_PRIORITY": "07",   # 최우선지정가
-            "LIMIT_IOC": "10",       # 지정가IOC
-            "MARKET_IOC": "13",      # 시장가IOC
-            "BEST_IOC": "16",        # 최유리IOC
-            "LIMIT_FOK": "20",       # 지정가FOK
-            "MARKET_FOK": "23",      # 시장가FOK
-            "BEST_FOK": "26",        # 최유리FOK
-            "PRE_MARKET_CLOSE": "61", # 장전시간외종가
-            "SINGLE_PRICE": "62",     # 시간외단일가
-            "POST_MARKET_CLOSE": "81" # 장후시간외종가
+            "limit": "00",           # 지정가
+            "market": "03",          # 시장가
+            "conditional": "05",     # 조건부지정가
+            "best_limit": "06",      # 최유리지정가
+            "best_priority": "07",   # 최우선지정가
+            "limit_IOC": "10",       # 지정가IOC
+            "market_IOC": "13",      # 시장가IOC
+            "best_IOC": "16",        # 최유리IOC
+            "limit_FOK": "20",       # 지정가FOK
+            "market_FOK": "23",      # 시장가FOK
+            "best_FOK": "26",        # 최유리FOK
+            "pre_market_close": "61", # 장전시간외종가
+            "single_price": "62",     # 시간외단일가
+            "post_market_close": "81" # 장후시간외종가
         }
         
         # 주문가격을 0으로 입력해야 하는 거래구분 코드
@@ -52,29 +52,30 @@ class KiwoomOrder:
         # 화면번호 관리
         self.screen_no  = {
             # 주문 화면번호 (0100번대)
-            "MARKET_BUY": "0101",      # 시장가 매수
-            "MARKET_SELL": "0102",     # 시장가 매도
-            "LIMIT_BUY": "0103",       # 지정가 매수
-            "LIMIT_SELL": "0104",      # 지정가 매도
-            "BEST_LIMIT_BUY": "0105",  # 최유리 지정가 매수
-            "BEST_LIMIT_SELL": "0106", # 최유리 지정가 매도
-            "CANCEL_ORDER": "0107",    # 주문 취소
-            "MODIFY_BUY": "0108",      # 매수 정정
-            "MODIFY_SELL": "0109",     # 매도 정정
+            "market_buy": "0101",      # 시장가 매수
+            "market_sell": "0102",     # 시장가 매도
+            "limit_buy": "0103",       # 지정가 매수
+            "limit_sell": "0104",      # 지정가 매도
+            "best_limit_buy": "0105",  # 최유리 지정가 매수
+            "best_limit_sell": "0106", # 최유리 지정가 매도
+            "cancel_order": "0107",    # 주문 취소
+            "modify_buy": "0108",      # 매수 정정
+            "modify_sell": "0109",     # 매도 정정
             
-            # 조회 화면번호 (0200번대로 확장 가능)
-            "BALANCE": "0201",         # 잔고 조회
-            "HISTORY": "0202",         # 주문 내역 조회
+            # 조회 화면번호 (0200번대)
+            "balance": "0201",         # 잔고 조회
+            "history": "0202",         # 주문 내역 조회
         }
 
         # 주문 타입 코드
         self.order_type    = {
-            "BUY": 1,                # 신규 매수
-            "SELL": 2,               # 신규 매도
-            "CANCEL": 3,             # 주문 취소
-            "MODIFY_BUY": 5,         # 매수 정정
-            "MODIFY_SELL": 6,        # 매도 정정
+            "buy": 1,                # 신규 매수
+            "sell": 2,               # 신규 매도
+            "cancel": 3,             # 주문 취소
+            "modify_buy": 5,         # 매수 정정
+            "modify_sell": 6,        # 매도 정정
         }
+    
     def _create_event_loop(self):
         """이벤트 루프 생성"""
         self.order_loop = QEventLoop()
@@ -111,7 +112,7 @@ class KiwoomOrder:
             
         return True
         
-    def _on_receive_tr_data(self, screen_no  , rqname, trcode, record_name, next):
+    def _on_receive_tr_data(self, screen_no, rqname, trcode, record_name, next):
         """
         주문 TR 데이터 수신 이벤트
         주문번호 존재 여부로 주문 성공 판단
@@ -120,7 +121,7 @@ class KiwoomOrder:
         self.order_success = bool(self.order_no)
         self.order_loop.exit()
         
-    def _on_receive_msg(self, screen_no  , rqname, trcode, msg):
+    def _on_receive_msg(self, screen_no, rqname, trcode, msg):
         """주문 관련 메시지 수신"""
         self.order_error_msg = msg
         
@@ -175,7 +176,7 @@ class KiwoomOrder:
         try:
             # 주문 전송
             result = self.kiwoom.SendOrder(
-                rqname, screen_no  , account_no, order_type  ,
+                rqname, screen_no  , account_no, order_type,
                 code, quantity, price, hoga_gb, org_order_no
             )
             
@@ -198,13 +199,13 @@ class KiwoomOrder:
         """시장가 매수"""
         return self.send_order(
             "시장가매수", 
-            self.screen_no  ["MARKET_BUY"],
+            self.screen_no  ["market_buy"],
             account_no,
-            self.order_type  ["BUY"],
+            self.order_type  ["buy"],
             code,
             quantity,
             0,
-            self.trade_types ["MARKET"]
+            self.trade_types ["market"]
         )
     
     def sell_market_order(self, code: str, quantity: int, account_no: str):
@@ -212,13 +213,13 @@ class KiwoomOrder:
                 
         return self.send_order(
             "시장가매도",
-            self.screen_no  ["MARKET_SELL"],
+            self.screen_no  ["market_sell"],
             account_no,
-            self.order_type  ["SELL"],
+            self.order_type  ["sell"],
             code,
             quantity,
             0,
-            self.trade_types ["MARKET"]
+            self.trade_types ["market"]
         )
         
 
@@ -226,39 +227,39 @@ class KiwoomOrder:
         """지정가 매수"""
         return self.send_order(
             "지정가매수",
-            self.screen_no  ["LIMIT_BUY"],
+            self.screen_no  ["limit_buy"],
             account_no,
-            self.order_type  ["BUY"],
+            self.order_type  ["buy"],
             code,
             quantity,
             price,
-            self.trade_types ["LIMIT"]
+            self.trade_types ["limit"]
         )
         
     def sell_limit_order(self, code: str, quantity: int, price: int, account_no: str):
         """지정가 매도"""
         return self.send_order(
             "지정가매도",
-            self.screen_no  ["LIMIT_SELL"],
+            self.screen_no  ["limit_sell"],
             account_no,
-            self.order_type  ["SELL"],
+            self.order_type  ["sell"],
             code,
             quantity,
             price,
-            self.trade_types ["LIMIT"]
+            self.trade_types ["limit"]
         )
         
     def cancel_order(self, org_order_no: str, code: str, quantity: int, account_no: str):
         """주문 취소"""
         return self.send_order(
             "주문취소",
-            self.screen_no  ["CANCEL_ORDER"],
+            self.screen_no  ["cancel_order"],
             account_no,
-            self.order_type  ["CANCEL"],
+            self.order_type  ["cancel"],
             code,
             quantity,
             0,
-            self.trade_types ["LIMIT"],
+            self.trade_types ["limit"],
             org_order_no
         )
         
@@ -266,13 +267,13 @@ class KiwoomOrder:
         """매수 주문 정정"""
         return self.send_order(
             "매수주문정정",
-            self.screen_no  ["MODIFY_BUY"],
+            self.screen_no  ["modify_buy"],
             account_no,
-            self.order_type  ["MODIFY_BUY"],
+            self.order_type  ["modify_buy"],
             code,
             quantity,
             price,
-            self.trade_types ["LIMIT"],
+            self.trade_types ["limit"],
             org_order_no
         )
         
@@ -280,13 +281,13 @@ class KiwoomOrder:
         """매도 주문 정정"""
         return self.send_order(
             "매도주문정정",
-            self.screen_no  ["MODIFY_SELL"],
+            self.screen_no  ["modify_sell"],
             account_no,
-            self.order_type  ["MODIFY_SELL"],
+            self.order_type  ["modify_sell"],
             code,
             quantity,
             price,
-            self.trade_types ["LIMIT"],
+            self.trade_types ["limit"],
             org_order_no
         )
         
@@ -294,24 +295,24 @@ class KiwoomOrder:
         """최유리지정가 매수"""
         return self.send_order(
             "최유리지정가매수",
-            self.screen_no  ["BEST_LIMIT_BUY"],
+            self.screen_no  ["best_limit_buy"],
             account_no,
-            self.order_type  ["BUY"],
+            self.order_type  ["buy"],
             code,
             quantity,
             0,
-            self.trade_types ["BEST_LIMIT"]
+            self.trade_types ["best_limit"]
         )
         
     def sell_best_limit_order(self, code: str, quantity: int, account_no: str):
         """최유리지정가 매도"""
         return self.send_order(
             "최유리지정가매도",
-            self.screen_no ["BEST_LIMIT_SELL"],
+            self.screen_no ["best_limit_sell"],
             account_no,
-            self.order_type   ["SELL"],
+            self.order_type   ["sell"],
             code,
             quantity,
             0,
-            self.trade_types ["BEST_LIMIT"]
+            self.trade_types ["best_limit"]
         )
