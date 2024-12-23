@@ -45,9 +45,11 @@ class KiwoomRealTimeStockPrice:
             "상한가발생시간": 567,
             "하한가발생시간": 568
         }
-            
+        
+        fid_list = ";".join([str(fid) for fid in fid_map.values()])  
+
         screen_no = self.get_screen_no()
-        self.kiwoom.SetRealReg(screen_no, code, fid_map, "0")
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, "0")
 
     def get_real_time_stock_trade_info(self,code):
         """
@@ -81,8 +83,11 @@ class KiwoomRealTimeStockPrice:
             "하한가발생시간": 568,
             "전일 동시간 거래량 비율" : 851
         }
+        
+        fid_list = ";".join([str(fid) for fid in fid_map.values()]) 
+
         screen_no = self.get_screen_no()
-        self.kiwoom.SetRealReg(screen_no, code, fid_map, "0")
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, "0")
     
     def get_real_time_order_book_info(self,code):
         """
@@ -147,11 +152,72 @@ class KiwoomRealTimeStockPrice:
             "매수호가직전대비9" : 99,
             "매도호가10" : 50,
             "매도호가수량10" : 70,
-            
-
-        
+            "매도호가직전대비10" : 90,
+            "매수호가10" : 60,
+            "매수호가수량10" : 80,
+            "매수호가직전대비10" : 100,
+            "매도호가총잔량" : 121,
+            "매도호가총잔량직전대비" : 122,
+            "매수호가총잔량" : 125,
+            "매수호가총잔량직전대비" : 126,
+            "예상체결가" : 23,
+            "예상체결수량" : 24,
+            "순매수잔량" : 128,
+            "매수비율" : 129,
+            "순매도잔량" : 138,
+            "매도비율" : 139,
+            "예상체결가전일종가대비" : 200,
+            "예상체결가전일종가대비등락율" : 201,
+            "예상체결가전일종가대비기호" : 238,
+            "예상체결가(예상체결 시간동안에만 유효한 값)" : 291,
+            "예상체결가량" : 292,
+            "예상체결가전일대비기호" : 293,
+            "예상체결가전일대비" : 294,
+            "예상체결가전일대비등락율" : 295,
+            "LP매도호가수량1" : 621,
+            "LP매수호가수량1" : 631,
+            "LP매도호가수량2" : 622,
+            "LP매수호가수량2" : 632,
+            "LP매도호가수량3" : 623,
+            "LP매수호가수량3" : 633,
+            "LP매도호가수량4" : 624,
+            "LP매수호가수량4" : 634,
+            "LP매도호가수량5" : 625,
+            "LP매수호가수량5" : 635,
+            "LP매도호가수량6" : 626,
+            "LP매수호가수량6" : 636,
+            "LP매도호가수량7" : 627,
+            "LP매수호가수량7" : 637,
+            "LP매도호가수량8" : 628,
+            "LP매수호가수량8" : 638,
+            "LP매도호가수량9" : 629,
+            "LP매수호가수량9" : 639,
+            "LP매도호가수량10" : 630,
+            "LP매수호가수량10" : 640,
+            "누적거래량" : 13,
+            "전일거래량대비예상체결률" : 299,
+            "장운영구분" : 215,
+            "투자자별ticker" : 216
         }
-        screen_no = self.get_screen_no()
-        self.kiwoom.SetRealReg(screen_no, code, fid_map, "0")
+        fid_list = ";".join([str(fid) for fid in fid_map.values()])  
 
+        screen_no = self.get_screen_no()
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, "0")
+
+    def get_after_hours_order_book_infp(self, code):
+        """
+        특정 종목 코드의 주식 시간외 호가정보를 가져옵니다.
+ 
+        """
+        fid_map = {
+        "호가시간" : 21,
+        "시간외매도호가총잔량" : 131,
+        "시간외매도호가총잔량직전대비" : 132,
+        "시간외매수호가총잔량" : 135,
+        "시간외매수호가총잔량직전대비" : 136,
+        }
+        fid_list = ";".join([str(fid) for fid in fid_map.values()])  
+
+        screen_no = self.get_screen_no()
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, "0")
 
