@@ -1,4 +1,3 @@
-
 class KiwoomRealTimeStockPrice:
 
     def __init__(self, kiwoom):
