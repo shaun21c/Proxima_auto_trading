@@ -59,6 +59,7 @@ class KiwoomAPI(QMainWindow):
             self._on_opt10081_req(rqname, trcode)
 
     def _comm_get_data(self, code, real_type, field_name, index, item_name):
+        """"""
         ret = self.kiwoom.dynamicCall("CommGetData(QString, QString, QString, int, QString)", code, real_type, field_name, index, item_name)
         return ret
     

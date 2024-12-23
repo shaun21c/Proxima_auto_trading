@@ -26,8 +26,8 @@ class KiwoomAPI(QMainWindow):
 
         self.kiwoom = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
         self._set_signal_slots()
-        self.login_event_loop = QEventLoop()
-        self.kiwoom.dynamicCall("CommConnect()")
+        self.login_event_loop = QEventLoop() # 이벤트 루프 생성
+        self.kiwoom.dynamicCall("CommConnect()") # 로그인 요청
         self.login_event_loop.exec_()
 
     def get_account_info(self):
