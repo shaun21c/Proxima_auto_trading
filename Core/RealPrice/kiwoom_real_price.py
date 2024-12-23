@@ -398,4 +398,4 @@ class KiwoomRealTimeStockPrice:
         screen_no = self.get_screen_no()
 
         fid_list = ";".join([str(fid) for fid in fid_map.values()])
-        self.kiwoom.SetRealReg(screen_no, fid_list, register_type)  # 종목 코드는 공백으로 설정
+        self.kiwoom.SetRealReg(screen_no, fid_list, register_type)  
