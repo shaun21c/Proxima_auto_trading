@@ -6,7 +6,7 @@ class KiwoomRealTimeStockPrice:
         :param screen_number: 기본 화면번호
         """
         self.kiwoom = kiwoom
-        self.screen_number = 2000
+        self.screen_no_counter = 2000
     
     def get_screen_no(self):
         """
@@ -17,10 +17,11 @@ class KiwoomRealTimeStockPrice:
         return str(self.screen_no_counter)
 
 
-    def get_real_time_stock_price_info(self, code):
+    def get_real_time_stock_price_info(self, code, register_type=1):
         """
         특정 종목 코드의 주요 시세 정보를 가져옵니다.
         :param code: 종목 코드
+        :param register_type: 실시간 등록타입 (0: 대체(등록한 종목들은 실시간 해지되고 등록한 종목만 실시간 시세가 등록) , 1: 추가(먼저 등록한 종목들과 함께 실시간 시세가 등록))
         """
         fid_map = {
             "현재가": 10,
@@ -48,9 +49,9 @@ class KiwoomRealTimeStockPrice:
         fid_list = ";".join([str(fid) for fid in fid_map.values()])  
 
         screen_no = self.get_screen_no()
-        self.kiwoom.SetRealReg(screen_no, code, fid_list, "0")
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, register_type)
 
-    def get_real_time_stock_trade_info(self,code):
+    def get_real_time_stock_trade_info(self,code, register_type=1):
         """
         특정 종목 코드의 주식 체결정보를 가져옵니다.
         :param code: 종목 코드
@@ -86,9 +87,9 @@ class KiwoomRealTimeStockPrice:
         fid_list = ";".join([str(fid) for fid in fid_map.values()]) 
 
         screen_no = self.get_screen_no()
-        self.kiwoom.SetRealReg(screen_no, code, fid_list, "0")
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, register_type)
     
-    def get_real_time_order_book_info(self,code):
+    def get_real_time_order_book_info(self,code, register_type=1):
         """
         특정 종목 코드의 주식 호가정보를 가져옵니다.
         :param code: 종목 코드
@@ -201,22 +202,199 @@ class KiwoomRealTimeStockPrice:
         fid_list = ";".join([str(fid) for fid in fid_map.values()])  
 
         screen_no = self.get_screen_no()
-        self.kiwoom.SetRealReg(screen_no, code, fid_list, "0")
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, register_type)
 
-    def get_after_hours_order_book_infp(self, code):
+    def get_after_hours_order_book_info(self, code, register_type=1):
         """
         특정 종목 코드의 주식 시간외 호가정보를 가져옵니다.
  
         """
         fid_map = {
-        "호가시간" : 21,
-        "시간외매도호가총잔량" : 131,
-        "시간외매도호가총잔량직전대비" : 132,
-        "시간외매수호가총잔량" : 135,
-        "시간외매수호가총잔량직전대비" : 136,
-        }
+            "호가시간" : 21,
+            "시간외매도호가총잔량" : 131,
+            "시간외매도호가총잔량직전대비" : 132,
+            "시간외매수호가총잔량" : 135,
+            "시간외매수호가총잔량직전대비" : 136,
+            }
+
         fid_list = ";".join([str(fid) for fid in fid_map.values()])  
 
         screen_no = self.get_screen_no()
-        self.kiwoom.SetRealReg(screen_no, code, fid_list, "0")
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, register_type)
 
+    def get_real_time_predicted_price(self, code, register_type=1):
+        """
+        특정 종목 코드의 예상체결가 정보를 가져옵니다.
+        """
+        fid_map = {
+            "체결시간" : 20,
+            "현재가" : 10,
+            "전일대비" : 11,
+            "등락률" : 12,
+            "거래량" : 15,
+            "누적거래량" : 13,
+            "전일대비기호" : 25
+
+        }
+
+        fid_list = ";".join([str(fid) for fid in fid_map.values()])  
+
+        screen_no = self.get_screen_no()
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, register_type)
+    
+    def get_real_time_stock_info(self, code, register_type=1):
+        """
+        특정 종목 코드의 주식 종목 정보를 가져옵니다.
+        :param code: 종목 코드
+        """
+        fid_map = {
+            "임의연장": 297,
+            "장전임의연장": 592,
+            "장후임의연장": 593,
+            "상한가": 305,
+            "하한가": 306,
+            "기준가": 307,
+            "조기종료ELW발생": 689,
+            "통화단위": 594,
+            "증거금율표시": 382,
+            "종목정보": 370,
+            "Extra Item": 300
+        }
+
+        fid_list = ";".join([str(fid) for fid in fid_map.values()])
+        screen_no = self.get_screen_no()
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, register_type)
+
+    def get_real_time_market_status(self, register_type=1):
+        """
+        장 시작 시간과 관련된 코드를 가져옵니다.
+        """       
+        
+        fid_map = {
+            "장운영구분": 215,
+            "체결시간": 20,
+            "장시작예상잔여시간": 214           
+        }
+
+        fid_list = ";".join([str(fid) for fid in fid_map.values()])
+        screen_no = self.get_screen_no()
+        self.kiwoom.SetRealReg(screen_no, fid_list, register_type)
+
+
+    def get_real_time_vi_status(self, code, register_type=1):
+        """
+        실시간으로 VI 발동/해제 데이터를 요청합니다.
+        :param code: 종목 코드 (종목별로 요청 가능)
+        """
+        fid_map = {
+            "종목코드,업종코드": 9001,
+            "종목명": 302,
+            "누적거래량": 13,
+            "누적거래대금": 14,
+            "VI발동구분": 9068,
+            "KOSPI,KOSDAQ,전체구분": 9008,
+            "장전구분": 9075,
+            "VI 발동가격": 1221,
+            "매매체결처리시각": 1223,
+            "VI 해제시각": 1224,
+            "VI 적용구분(정적/동적/동적+정적)": 1225,
+            "기준가격 정적": 1236,
+            "기준가격 동적": 1237,
+            "괴리율 정적": 1238,
+            "괴리율 동적": 1239,
+            "VI발동가 등락률": 1489,
+            "VI발동횟수": 1490,
+            "발동방향구분": 9069,
+            "Extra Item": 1279
+        }
+
+        fid_list = ";".join([str(fid) for fid in fid_map.values()])
+        screen_no = self.get_screen_no()
+        self.kiwoom.SetRealReg(screen_no, code, fid_list, register_type)
+
+    def get_real_time_order_execution(self, register_type=1):
+        """
+        실시간으로 주문 체결 데이터를 요청합니다.
+        :param account_no: 계좌번호
+        :param screen_no: 화면번호
+        """
+
+        fid_map = {
+            "계좌번호": 9201,
+            "주문번호": 9203,
+            "관리자사번": 9205,
+            "종목코드,업종코드": 9001,
+            "주문업무분류": 912,
+            "주문상태": 913,
+            "종목명": 302,
+            "주문수량": 900,
+            "주문가격": 901,
+            "미체결수량": 902,
+            "체결누계금액": 903,
+            "원주문번호": 904,
+            "주문구분": 905,
+            "매매구분": 906,
+            "매도수구분": 907,
+            "주문/체결시간": 908,
+            "체결번호": 909,
+            "체결가": 910,
+            "체결량": 911,
+            "현재가": 10,
+            "(최우선)매도호가": 27,
+            "(최우선)매수호가": 28,
+            "단위체결가": 914,
+            "단위체결량": 915,
+            "당일매매수수료": 938,
+            "당일매매세금": 939,
+            "거부사유": 919,
+            "화면번호": 920,
+            "터미널번호": 921,
+            "신용구분(실시간 체결용)": 922,
+            "대출일(실시간 체결용)": 923
+        }
+        
+        screen_no = self.get_screen_no()
+
+        fid_list = ";".join([str(fid) for fid in fid_map.values()])
+        self.kiwoom.SetRealReg(screen_no, fid_list, register_type)
+
+    def get_real_time_account_balance(self, register_type=1):
+        """
+        실시간으로 잔고 데이터를 요청합니다.
+        :param account_no: 계좌번호
+        :param screen_no: 화면번호
+        """
+        fid_map = {
+            "계좌번호": 9201,
+            "종목코드,업종코드": 9001,
+            "신용구분": 917,
+            "대출일": 916,
+            "종목명": 302,
+            "현재가": 10,
+            "보유수량": 930,
+            "매입단가": 931,
+            "총매입가(당일누적)": 932,
+            "주문가능수량": 933,
+            "당일순매수량": 945,
+            "매도/매수구분": 946,
+            "당일총매도손익": 950,
+            "Extra Item1": 951,
+            "(최우선)매도호가": 27,
+            "(최우선)매수호가": 28,
+            "기준가": 307,
+            "손익율(실현손익)": 8019,
+            "신용금액": 957,
+            "신용이자": 958,
+            "만기일": 918,
+            "당일실현손익(유가)": 990,
+            "당일실현손익률(유가)": 991,
+            "당일실현손익(신용)": 992,
+            "당일실현손익률(신용)": 993,
+            "담보대출수량": 959,
+            "Extra Item2": 924
+        }
+
+        screen_no = self.get_screen_no()
+
+        fid_list = ";".join([str(fid) for fid in fid_map.values()])
+        self.kiwoom.SetRealReg(screen_no, fid_list, register_type)  # 종목 코드는 공백으로 설정
